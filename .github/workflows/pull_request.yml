@@ -107,8 +107,7 @@ jobs:
       - name: Check git diff
         run: git diff origin/${{ github.base_ref }} origin/${{ github.head_ref }} --name-only --diff-filter=d | grep "\.py" | wc -l
 
-      - if: $PY_FILES != ''
-        name: Hello friend
-        run: echo "hello"
+      - name: Hello friend
+        run: echo $PY_FILES
         env:
           PY_FILES: git diff origin/${{ github.base_ref }} origin/${{ github.head_ref }} --name-only --diff-filter=d | grep "\.py"
