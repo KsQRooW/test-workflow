@@ -59,9 +59,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-        run: echo "PY_FILES=${git diff origin/${{ github.base_ref }} origin/${{ github.head_ref }} --name-only --diff-filter=d | grep "\.py"}" >> "$GITHUB_ENV"
 
       - name: Dump GitHub context
         env:
