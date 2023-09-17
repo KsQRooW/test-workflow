@@ -99,4 +99,4 @@ jobs:
         run: git branch
 
       - name: Check git diff
-        run: git diff refs/${{ github.base_ref }} refs/${{ github.head_ref }} --name-only --diff-filter=d
+        run: git diff origin/${{ github.base_ref }} origin/${{ github.head_ref }} --name-only --diff-filter=d
