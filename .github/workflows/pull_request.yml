@@ -90,10 +90,6 @@ jobs:
           echo "The run id is: $GITHUB_RUN_ID"
           echo "The GitHub Actor's username is: $GITHUB_ACTOR"
           echo "GitHub SHA: $GITHUB_SHA"
-#    runs-on: ubuntu-latest
-#    steps:
-#      - name: Get all env variables
-#        run: $(printenv)
-#
-#      - name: Check git diff
-#        run: $(git diff github.base_ref github.head_ref --name-only --diff-filter=d)
+
+      - name: Check git diff
+        run: git diff ${{ github.base_ref }} ${{ github.head_ref }} --name-only --diff-filter=d
