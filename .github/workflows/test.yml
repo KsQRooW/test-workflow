@@ -1,0 +1,16 @@
+name: Tests
+
+on:
+  workflow_call:
+
+jobs:
+  pytest:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Prepare Environment
+        uses: ./.github/actions/prepare
+
+      - name: Testing
+        run: pytest .
