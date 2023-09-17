@@ -58,5 +58,8 @@ jobs:
   echo-git-diff:
     runs-on: ubuntu-latest
     steps:
+      - name: Get all env variables
+        run: $(printenv)
+
       - name: Check git diff
         run: $(git diff github.base_ref github.head_ref --name-only --diff-filter=d)
