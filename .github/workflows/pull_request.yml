@@ -107,6 +107,6 @@ jobs:
       - name: Check git diff
         run: git diff origin/${{ github.base_ref }} origin/${{ github.head_ref }} --name-only --diff-filter=d | grep "\.py" | wc -l
 
-      - if: git diff origin/${{ github.base_ref }} origin/${{ github.head_ref }} --name-only --diff-filter=d | grep "\.py" | wc -l == "3"
+      - if: ${{ git diff origin/${{ github.base_ref }} origin/${{ github.head_ref }} --name-only --diff-filter=d | grep "\.py" | wc -l == "3" }}
         name: Hello friend
         run: echo "hello"
