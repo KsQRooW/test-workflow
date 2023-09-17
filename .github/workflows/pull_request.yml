@@ -92,7 +92,7 @@ jobs:
           echo "GitHub SHA: $GITHUB_SHA"
 
       - name: Check git diff
-        run: git branches
+        run: git branch
 
       - name: Check git diff
         run: git diff ${{ github.base_ref }} ${{ github.head_ref }} --name-only --diff-filter=d
