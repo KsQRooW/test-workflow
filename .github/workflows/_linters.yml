@@ -15,22 +15,16 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: PY_FILES
-        run: echo ${{ inputs.PY_FILES }}
-
       - name: Prepare Environment
         uses: ./.github/actions/prepare
 
       - name: Linting
-        run: ruff .
+        run: ruff ${{ inputs.PY_FILES }}
 
   deptry:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-
-      - name: PY_FILES
-        run: echo ${{ inputs.PY_FILES }}
 
       - name: Prepare Environment
         uses: ./.github/actions/prepare
@@ -43,11 +37,8 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: PY_FILES
-        run: echo ${{ inputs.PY_FILES }}
-
       - name: Prepare Environment
         uses: ./.github/actions/prepare
 
       - name: Type checking
-        run: mypy .
+        run: mypy ${{ inputs.PY_FILES }}
