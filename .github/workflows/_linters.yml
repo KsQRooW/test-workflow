@@ -19,7 +19,7 @@ jobs:
         uses: ./.github/actions/prepare
 
       - name: Linting
-        run: ruff ${{ inputs.PY_FILES }}
+        run: ruff check ${{ inputs.PY_FILES }}
 
   deptry:
     runs-on: ubuntu-latest

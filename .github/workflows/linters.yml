@@ -6,7 +6,7 @@ jobs:
   check_py_files:
     runs-on: ubuntu-latest
     outputs:
-      PY_FILES: ${{ steps.search_step.outputs.PY_FILES }}
+      PY_FILES: '' # ${{ steps.search_step.outputs.PY_FILES }}
     steps:
       - uses: actions/checkout@v4
         with:
