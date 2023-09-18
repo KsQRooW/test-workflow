@@ -4,7 +4,7 @@ on: workflow_call
 
 env:
   PY_FILES_1: git diff origin/${{ github.base_ref }} origin/${{ github.head_ref }} --name-only --diff-filter=d | grep "\.py"
-  PY_FILES_2: ${{ git diff origin/${{ github.base_ref }} origin/${{ github.head_ref }} --name-only --diff-filter=d | grep "\.py" }}
+#  PY_FILES_2: ${{ git diff origin/${{ github.base_ref }} origin/${{ github.head_ref }} --name-only --diff-filter=d | grep "\.py" }}
   PY_FILES_3: $(git diff origin/${{ github.base_ref }} origin/${{ github.head_ref }} --name-only --diff-filter=d | grep "\.py")
   PY_FILES_4: 'git diff origin/${{ github.base_ref }} origin/${{ github.head_ref }} --name-only --diff-filter=d | grep "\.py"'
 
@@ -15,8 +15,8 @@ jobs:
       - name: PY_FILES_1
         run: echo ${PY_FILES_1}
 
-      - name: PY_FILES_2
-        run: echo ${PY_FILES_2}
+#      - name: PY_FILES_2
+#        run: echo ${PY_FILES_2}
 
       - name: PY_FILES_3
         run: echo ${PY_FILES_3}
