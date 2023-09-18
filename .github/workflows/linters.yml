@@ -6,7 +6,7 @@ jobs:
   check_py_files:
     runs-on: ubuntu-latest
     outputs:
-      PY_FILES: '' # ${{ steps.search_step.outputs.PY_FILES }}
+      PY_FILES: ${{ steps.search_step.outputs.PY_FILES }}
     steps:
       - uses: actions/checkout@v4
         with:
@@ -14,7 +14,7 @@ jobs:
 
       - id: search_step
         name: Detect .py files
-        run: echo "PY_FILES=$(git diff origin/${{ github.base_ref }} origin/${{ github.head_ref }} --name-only --diff-filter=d | grep "\.py" | tr "\n" " ")" >> "$GITHUB_OUTPUT"
+        run: echo "PY_FILES=$(git diff origin/${{ github.base_ref }} origin/${{ github.head_ref }} --name-only --diff-filter=d | grep "\.zxc" | tr "\n" " ")" >> "$GITHUB_OUTPUT"
 
   call_linters:
     if: ${{ needs.check_py_files.outputs.PY_FILES }}
