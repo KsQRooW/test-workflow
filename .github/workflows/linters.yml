@@ -7,7 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Detect .py files
-        run: echo "$PY_FILES=(git diff origin/${{ github.base_ref }} origin/${{ github.head_ref }} --name-only --diff-filter=d | grep "\.py")" >> $GITHUB_ENV
+        run: echo "$PY_FILES=$(git diff origin/${{ github.base_ref }} origin/${{ github.head_ref }} --name-only --diff-filter=d | grep "\.py")" >> $GITHUB_ENV
 
       - name: PY_FILES
         run: echo ${PY_FILES}
