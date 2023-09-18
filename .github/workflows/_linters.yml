@@ -1,6 +1,13 @@
 name: Linters Call
 
-on: workflow_call
+on:
+  workflow_call:
+    inputs:
+      PY_FILES:
+        description: 'Changed py files in PR'
+        required: true
+        type: string
+
 
 jobs:
   ruff:
