@@ -12,17 +12,11 @@ jobs:
   ruff:
     runs-on: ubuntu-latest
     steps:
-      - name: PY_FILES_1
-        run: echo ${PY_FILES_1}
+      - name: Detect .py files
+        run: echo "$PY_FILES=(git diff origin/${{ github.base_ref }} origin/${{ github.head_ref }} --name-only --diff-filter=d | grep "\.py")" >> $GITHUB_ENV
 
-#      - name: PY_FILES_2
-#        run: echo ${PY_FILES_2}
-
-      - name: PY_FILES_3
-        run: echo ${PY_FILES_3}
-
-      - name: PY_FILES_4
-        run: echo ${PY_FILES_4}
+      - name: PY_FILES
+        run: echo ${PY_FILES}
 
       - uses: actions/checkout@v3
 
