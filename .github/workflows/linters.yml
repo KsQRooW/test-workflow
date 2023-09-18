@@ -22,6 +22,7 @@ jobs:
           } >> "$GITHUB_OUTPUT"
 
   call_linters:
+    name: Call linters
     needs: check_py_files
     env:
       PY_FILES: ${{ needs.check_py_files.outputs.PY_FILES }}
