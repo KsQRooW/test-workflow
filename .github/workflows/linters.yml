@@ -4,7 +4,7 @@ on: workflow_call
 
 jobs:
   check_changes:
-    name: Detecting .py files
+    name: Detecting changes
     runs-on: ubuntu-latest
     outputs:
       PY_FILES: ${{ steps.search_py_files.outputs.PY_FILES }}
@@ -15,16 +15,16 @@ jobs:
           fetch-depth: 0
 
       - id: search_py_files
-        name: Detect .py files
+        name: Detecting changes in .py files
         run: echo "PY_FILES=$(git diff origin/${{ github.base_ref }} origin/${{ github.head_ref }} --name-only --diff-filter=d | grep "\.py" | tr "\n" " ")" >> "$GITHUB_OUTPUT"
 
       - id: search_requirements_changed
-        name: Detect requirements.txt / pyproject.toml
+        name: Detecting changes in requirements.txt / pyproject.toml
         run: echo "REQUIREMENTS_CHANGED=[ -z $(git diff origin/${{ github.base_ref }} origin/${{ github.head_ref }} --name-only --diff-filter=d | grep "req.*\.txt|pyproject\.toml" | tr "\n" " ") ] && echo "true" || echo "false"" >> "$GITHUB_OUTPUT"
 
   code_linters:
     name: Running code linters
-    if: ${{ needs.check_py_files.outputs.PY_FILES }}
+    if: ${{ needs.search_py_files.outputs.PY_FILES }}
     needs: check_changes
     uses: ./.github/workflows/code_linters.yml
     with:
@@ -32,7 +32,7 @@ jobs:
 
   requirements_linters:
     name: Running requirements linters
-    if: ${{ needs.check_py_files.outputs.REQUIREMENTS_CHANGED }} == "true" || ${{ needs.check_py_files.outputs.PY_FILES }}
+    if: ${{ needs.search_requirements_changed.outputs.REQUIREMENTS_CHANGED }} == "true" || ${{ needs.check_py_files.outputs.PY_FILES }}
     needs: check_changes
     uses: ./.github/workflows/requirements_linters.yml
     with:
