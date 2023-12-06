@@ -24,7 +24,7 @@ jobs:
 
   code_linters:
     name: Running code linters
-    if: ${{ needs.search_py_files.outputs.PY_FILES }}
+    if: ${{ needs.check_changes.outputs.PY_FILES }}
     needs: check_changes
     uses: ./.github/workflows/code_linters.yml
     with:
@@ -32,7 +32,7 @@ jobs:
 
   requirements_linters:
     name: Running requirements linters
-    if: ${{ needs.search_requirements_changed.outputs.REQUIREMENTS_CHANGED }} == "true" || ${{ needs.check_py_files.outputs.PY_FILES }}
+    if: ${{ needs.check_changes.outputs.REQUIREMENTS_CHANGED }} == "true" || ${{ needs.check_changes.outputs.PY_FILES }}
     needs: check_changes
     uses: ./.github/workflows/requirements_linters.yml
     with:
