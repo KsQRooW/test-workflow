@@ -1,4 +1,4 @@
-name: Linters Call
+name: Requirements Linters Call
 
 on:
   workflow_call:
