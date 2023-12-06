@@ -10,7 +10,7 @@ on:
       REQUIREMENTS_CHANGED:
         description: 'Changed requirements files in PR'
         required: true
-        type: boolean
+        type: string
 
 # TODO: вынести в отдельную параметризированный action lint
 jobs:
