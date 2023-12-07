@@ -13,12 +13,13 @@ jobs:
   ruff:
     runs-on: ubuntu-latest
     steps:
-      - uses: ./.github/actions/lint
+      - uses: actions/checkout@v4
+
+      - name: ruff
+        uses: ./.github/actions/lint
         with:
           PY_FILES: ${{ inputs.PY_FILES }}
           COMMAND: ruff check
-
-      - uses: actions/checkout@v4
 
       - name: Prepare Environment
         uses: ./.github/actions/prepare
@@ -29,12 +30,13 @@ jobs:
   mypy:
     runs-on: ubuntu-latest
     steps:
-      - uses: ./.github/actions/lint
+      - uses: actions/checkout@v4
+
+      - name: mypy
+        uses: ./.github/actions/lint
         with:
           PY_FILES: ${{ inputs.PY_FILES }}
           COMMAND: mypy
-
-      - uses: actions/checkout@v4
 
       - name: Prepare Environment
         uses: ./.github/actions/prepare

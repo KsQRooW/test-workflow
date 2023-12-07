@@ -1,5 +1,5 @@
 name: Run linters
-description: Prepare Python and install requirements
+description: Running linters
 inputs:
   PY_FILES:
     description: '.py files for checking'
@@ -11,8 +11,6 @@ inputs:
 runs:
   using: composite
   steps:
-    - uses: actions/checkout@v4
-
     - name: Prepare Environment
       uses: ./.github/actions/prepare
 
