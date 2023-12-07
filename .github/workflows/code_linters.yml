@@ -19,7 +19,7 @@ jobs:
         uses: ./.github/actions/lint
         with:
           PY_FILES: ${{ inputs.PY_FILES }}
-          COMMAND: ruff check
+          COMMAND: "ruff check"
 
       - name: Prepare Environment
         uses: ./.github/actions/prepare
@@ -36,7 +36,7 @@ jobs:
         uses: ./.github/actions/lint
         with:
           PY_FILES: ${{ inputs.PY_FILES }}
-          COMMAND: mypy
+          COMMAND: "mypy"
 
       - name: Prepare Environment
         uses: ./.github/actions/prepare
