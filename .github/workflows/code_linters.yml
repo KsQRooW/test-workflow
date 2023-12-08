@@ -33,6 +33,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          repository: KsQRooW/test-workflow
 
       - name: mypy
         uses: ./test-workflow/.github/actions/lint
