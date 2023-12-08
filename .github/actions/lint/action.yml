@@ -1,18 +1,19 @@
 name: Run linters
 description: Running linters
-#inputs:
-#  PY_FILES:
-#    description: '.py files for checking'
-#    required: true
-#  COMMAND:
-#    description: 'Command for starting linters (Example: mypy, ruff check, etc.)'
-#    required: true
+inputs:
+  PY_FILES:
+    description: '.py files for checking'
+    required: true
+  COMMAND:
+    description: 'Command for starting linters (Example: mypy, ruff check, etc.)'
+    required: true
 
 runs:
   using: composite
   steps:
+    - uses: actions/checkout@v4
     - name: Prepare Environment
-      uses: ./test-workflow/.github/actions/prepare
+      uses: ./.github/actions/prepare
 
     - name: Linting
       shell: bash

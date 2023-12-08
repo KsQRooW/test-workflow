@@ -14,18 +14,17 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/checkout@v4
         with:
           repository: KsQRooW/test-workflow
 
       - name: ruff
-        uses: ./test-workflow/.github/actions/lint
+        uses: ./.github/actions/lint
         with:
           PY_FILES: ${{ inputs.PY_FILES }}
           COMMAND: ruff check
 
       - name: Prepare Environment
-        uses: ./test-workflow/.github/actions/prepare
+        uses: ./.github/actions/prepare
 
       - name: Linting
         run: ruff check ${{ inputs.PY_FILES }}
@@ -33,7 +32,6 @@ jobs:
   mypy:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
       - uses: actions/checkout@v4
         with:
           repository: KsQRooW/test-workflow
