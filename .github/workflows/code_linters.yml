@@ -16,13 +16,13 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: ruff
-        uses: ./.github/actions/lint/
+        uses: https://github.com/KsQRooW/test-workflow/tree/main/.github/actions/lint
         with:
           PY_FILES: ${{ inputs.PY_FILES }}
           COMMAND: ruff check
 
       - name: Prepare Environment
-        uses: ./.github/actions/prepare
+        uses: https://github.com/KsQRooW/test-workflow/tree/main/.github/actions/prepare
 
       - name: Linting
         run: ruff check ${{ inputs.PY_FILES }}
@@ -33,13 +33,13 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: mypy
-        uses: ./.github/actions/lint/
+        uses: https://github.com/KsQRooW/test-workflow/tree/main/.github/actions/lint
         with:
           PY_FILES: ${{ inputs.PY_FILES }}
           COMMAND: mypy
 
       - name: Prepare Environment
-        uses: ./.github/actions/prepare
+        uses: https://github.com/KsQRooW/test-workflow/tree/main/.github/actions/prepare
 
       - name: Type checking
         run: mypy ${{ inputs.PY_FILES }}

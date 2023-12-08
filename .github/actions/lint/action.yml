@@ -12,7 +12,7 @@ runs:
   using: composite
   steps:
     - name: Prepare Environment
-      uses: ./.github/actions/prepare
+      uses: https://github.com/KsQRooW/test-workflow/tree/main/.github/actions/prepare
 
     - name: Linting
       shell: bash
