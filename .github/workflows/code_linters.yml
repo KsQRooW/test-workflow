@@ -14,15 +14,17 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          repository: KsQRooW/test-workflow
 
       - name: ruff
-        uses: https://github.com/KsQRooW/test-workflow/tree/main/.github/actions/lint
+        uses: ./test-workflow/.github/actions/lint
         with:
           PY_FILES: ${{ inputs.PY_FILES }}
           COMMAND: ruff check
 
       - name: Prepare Environment
-        uses: https://github.com/KsQRooW/test-workflow/tree/main/.github/actions/prepare
+        uses: ./test-workflow/.github/actions/prepare
 
       - name: Linting
         run: ruff check ${{ inputs.PY_FILES }}
@@ -33,13 +35,13 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: mypy
-        uses: https://github.com/KsQRooW/test-workflow/tree/main/.github/actions/lint
+        uses: ./test-workflow/.github/actions/lint
         with:
           PY_FILES: ${{ inputs.PY_FILES }}
           COMMAND: mypy
 
       - name: Prepare Environment
-        uses: https://github.com/KsQRooW/test-workflow/tree/main/.github/actions/prepare
+        uses: ./test-workflow/.github/actions/prepare
 
       - name: Type checking
         run: mypy ${{ inputs.PY_FILES }}
